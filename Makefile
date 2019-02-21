@@ -1,4 +1,4 @@
-all: build/openmaptiles.tm2source/data.yml build/mapping.yaml build/tileset.sql
+all: build/openmaptiles.tm2source/data.yml build/openmaptiles_text.tm2source/data.yml build/mapping.yaml build/tileset.sql
 
 help:
 	@echo "=============================================================================="
@@ -37,6 +37,9 @@ help:
 
 build/openmaptiles.tm2source/data.yml:
 	mkdir -p build/openmaptiles.tm2source && generate-tm2source openmaptiles.yaml --host="postgres" --port=5432 --database="openmaptiles" --user="openmaptiles" --password="openmaptiles" > build/openmaptiles.tm2source/data.yml
+
+build/openmaptiles_text.tm2source/data.yml:
+	mkdir -p build/openmaptiles_text.tm2source && generate-tm2source openmaptiles_text.yaml --host="postgres" --port=5432 --database="openmaptiles" --user="openmaptiles" --password="openmaptiles" > build/openmaptiles_text.tm2source/data.yml
 
 build/mapping.yaml:
 	mkdir -p build && generate-imposm3 openmaptiles.yaml > build/mapping.yaml
